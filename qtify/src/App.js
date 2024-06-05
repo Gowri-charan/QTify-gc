@@ -2,6 +2,8 @@
 import logo from './assets/logo.png';
 import './App.css';
 import Navbar from './components/Navbar/Navbar'
+// import Hero from './components/Hero./Hero';
+import Hero from './components/Hero/Hero'
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         </a>
       </header> */}
       <Navbar/>
+      <Hero/>
+      
     </div>
   );
 }
