@@ -3,12 +3,12 @@ import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
 import Section from './components/Section/Section';
 import styles from './App.module.css'
-import {fetchTopAlbums} from './api/api'
+import {fetchTopAlbums, fetchNewAlbums} from './api/api'
 import { useEffect, useState } from 'react';
 
 function App() {
   const[topAlbumSongs,setTopAlbumSongs]=useState([]);
-  // const[newAlbumSongs,setNewAlbumSongs]=useState([]);
+  const[newAlbumSongs,setNewAlbumSongs]=useState([]);
 
   const generateTopAlbumSongs=async()=>{
     try{
@@ -21,9 +21,20 @@ function App() {
     } 
   }
 
+  const generateNewAlbumSongs=async()=>{
+    try{
+      const res= await fetchNewAlbums();
+    setNewAlbumSongs(res);
+    }
+    catch(error){
+      console.log(error);
+      return null;
+    } 
+  }
+
   useEffect(()=>{
     generateTopAlbumSongs();
-    // generateNewAlbumSongs();
+    generateNewAlbumSongs();
     // generateSongs();
   },[])
 
@@ -47,7 +58,7 @@ function App() {
       <Hero/>
       <div className={styles.sectionWrapper}>
       <Section type='album' title='Top Albums' data={topAlbumSongs}/>
-      {/* <Section type='album' title='New Albums' data={newAlbumSongs}/> */}
+      <Section type='album' title='New Albums' data={newAlbumSongs}/>
       {/* <FilterSection  type='song' title='Songs' value={value} filteredData={filteredData} handleChangeIndex={handleChangeIndex}/> */}
       </div>
       

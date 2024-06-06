@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // import { CircularProgress } from '@mui/material';
 import Card from "../Card/Card";
 import styles from "./Section.module.css"
-// import Carousel from '../Carousel/Carousel';
+import Carousel from '../Carousel/Carousel';
 
 // eg of data recieved is:
 // type='album' title='Top Albums' data={topAlbumSongs}
@@ -47,7 +47,7 @@ const Section=({type,title,data,toggle=true})=> {
             ):(
               <div>
               {/* show carousel here */}
-              {/* <Carousel data={data} renderCardComponent={(data)=><Card data={data} type={type}/>}/> */}
+              <Carousel data={data} renderCardComponent={(data)=><Card data={data} type={type}/>}/>
               </div>  
             )}
             </div>
