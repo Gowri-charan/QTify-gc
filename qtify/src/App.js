@@ -1,11 +1,32 @@
-// import logo from './logo.svg';
-import logo from './assets/logo.png';
 import './App.css';
 import Navbar from './components/Navbar/Navbar'
-// import Hero from './components/Hero./Hero';
 import Hero from './components/Hero/Hero'
+import Section from './components/Section/Section';
+import styles from './App.module.css'
+import {fetchTopAlbums} from './api/api'
+import { useEffect, useState } from 'react';
 
 function App() {
+  const[topAlbumSongs,setTopAlbumSongs]=useState([]);
+  // const[newAlbumSongs,setNewAlbumSongs]=useState([]);
+
+  const generateTopAlbumSongs=async()=>{
+    try{
+      const res= await fetchTopAlbums();
+    setTopAlbumSongs(res);
+    }
+    catch(error){
+      console.log(error);
+      return null;
+    } 
+  }
+
+  useEffect(()=>{
+    generateTopAlbumSongs();
+    // generateNewAlbumSongs();
+    // generateSongs();
+  },[])
+
   return (
     <div className="App">
       {/* <header className="App-header">
@@ -24,6 +45,11 @@ function App() {
       </header> */}
       <Navbar/>
       <Hero/>
+      <div className={styles.sectionWrapper}>
+      <Section type='album' title='Top Albums' data={topAlbumSongs}/>
+      {/* <Section type='album' title='New Albums' data={newAlbumSongs}/> */}
+      {/* <FilterSection  type='song' title='Songs' value={value} filteredData={filteredData} handleChangeIndex={handleChangeIndex}/> */}
+      </div>
       
     </div>
   );

@@ -1,0 +1,47 @@
+.wrapper{
+    width: 160px;
+    /* height: 232px; */
+   }
+   
+   .card{
+       position: relative;
+       height: 205px;
+       width: 160px;
+       border-radius: 10px;
+       overflow: hidden;
+   }
+   
+   
+   .banner{
+       position: absolute;
+       bottom: 0;
+       left: 0;
+       width: 100%;
+       height: 42px;
+       background-color: var(--color-white);
+       display: flex;
+       align-items: center;
+       padding: 6px;
+   }
+   .banner .chip{
+           background-color: var(--color-black);
+           color: var(--color-white);
+   }
+   
+   /* alternative of above chip, a pill */
+   .pill{
+       background-color: var(--color-black);
+       color: var(--color-white);
+       border-radius: 15px;
+       padding: 6px;
+       font-size: 12px;
+       width: max-content;
+   
+   }
+   
+   .titleWrapper{
+       margin-top: 6px;
+       overflow: hidden;
+       text-overflow: ellipsis;
+   }
+   
